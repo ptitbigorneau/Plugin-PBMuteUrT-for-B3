@@ -1,0 +1,15 @@
+<configuration plugin="pbmuteurt">
+    <settings name="settings">
+<!--min level required for mute a player permanently -->
+        <set name="adminlevelpermmute">60</set>
+<!--min level required for unmute a player -->
+        <set name="adminlevelunmute">60</set>
+<!--min level required for mute a player temporarily  -->
+        <set name="adminleveltempmute">40</set>
+<!--min level required for mute info a player  -->
+        <set name="adminlevelimute">20</set>
+<!--maximum time of tempmute ( d -> day,  h -> hour,  m -> minute) no limit time for adminlevelpermmute -->
+        <set name="maxitempmute">1d</set>
+        </settings>
+</configuration>
+
