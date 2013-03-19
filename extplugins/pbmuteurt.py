@@ -30,6 +30,11 @@ class PbmuteurtPlugin(b3.plugin.Plugin):
     
     _cronTab = None
     _adminPlugin = None
+    _adminlevelpermmute = 60
+    _adminlevelunmute = 60
+    _adminleveltempmute = 40
+    _adminlevelimute = 20
+    _maxitempmute = "1d"
 
     def onStartup(self):
 
@@ -57,11 +62,35 @@ class PbmuteurtPlugin(b3.plugin.Plugin):
 
     def onLoadConfig(self):
 
-        self._adminlevelpermmute = self.config.getint('settings', 'adminlevelpermmute')
-        self._adminleveltempmute = self.config.getint('settings', 'adminleveltempmute')
-        self._adminlevelunmute = self.config.getint('settings', 'adminlevelunmute')
-        self._adminlevelimute = self.config.getint('settings', 'adminlevelimute')
-        self._maxitempmute = self.config.get('settings', 'maxitempmute')
+        try:
+            self._adminlevelpermmute = self.config.getint('settings', 'adminlevelpermmute')
+        except Exception, err:
+            self.warning("Using default value %s for adminlevelpermmute. %s" % (self._adminlevelpermmute, err))
+        self.debug('adminlevelpermmute : %s' % self._adminlevelpermmute)
+
+        try:
+            self._adminleveltempmute = self.config.getint('settings', 'adminleveltempmute')
+        except Exception, err:
+            self.warning("Using default value %s for adminleveltempmute. %s" % (self._adminleveltempmute, err))
+        self.debug('adminleveltempmute : %s' % self._adminleveltempmute)
+
+        try:
+            self._adminlevelunmute = self.config.getint('settings', 'adminlevelunmute')
+        except Exception, err:
+            self.warning("Using default value %s for adminlevelunmute. %s" % (self._adminlevelunmute, err))
+        self.debug('adminlevelunmute : %s' % self._adminlevelunmute)
+
+        try:
+            self._adminlevelimute = self.config.getint('settings', 'adminlevelimute')
+        except Exception, err:
+            self.warning("Using default value %s for adminlevelimute. %s" % (self._adminlevelimute, err))
+        self.debug('adminlevelimute : %s' % self._adminlevelimute)
+
+        try:
+            self._maxitempmute = self.config.get('settings', 'maxitempmute')
+        except Exception, err:
+            self.warning("Using default value %s for maxitempmute. %s" % (self._maxitempmute, err))
+        self.debug('maxitempmute : %s' % self._maxitempmute)
 
     def onEvent(self, event):
 
