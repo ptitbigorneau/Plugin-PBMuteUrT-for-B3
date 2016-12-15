@@ -7,7 +7,7 @@
 #
 
 __author__  = 'PtitBigorneau www.ptitbigorneau.fr'
-__version__ = '1.1'
+__version__ = '1.2'
 
 import b3
 import b3.plugin
